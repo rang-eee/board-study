@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.BoardMapper">
+
+    <select id="selectBoardList" resultType="com.example.demo.dto.BoardDto">
+        SELECT id, title, writer, content, created_at
+        FROM board
+        ORDER BY id DESC
+    </select>
+
+    <select id="selectBoardById" resultType="com.example.demo.dto.BoardDto">
+        SELECT id, title, writer, content, created_at
+        FROM board
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertBoard"
+            parameterType="com.example.demo.dto.BoardDto"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO board (title, content, writer)
+        VALUES (#{title}, #{content}, #{writer})
+    </insert>
+
+    <update id="updateBoard"
+            parameterType="com.example.demo.dto.BoardDto">
+        UPDATE board
+        <set>
+            <if test="title != null and title != '' ">
+                title = #{title},
+            </if>
+            <if test="content != null and content != '' ">
+                content = #{content},
+            </if>
+        </set>
+        WHERE id = #{id}
+        <!--
+        SET
+            name = #{name},
+            email = #{email}
+        -->
+    </update>
+
+    <delete id="deleteBoard">
+        DELETE FROM board WHERE id = #{id}
+    </delete>
+
+</mapper>

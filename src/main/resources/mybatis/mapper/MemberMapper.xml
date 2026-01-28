@@ -28,7 +28,7 @@
         FROM member
         WHERE id = #{id}
     </select>
-    <!-- CRUD Updtae 단계 7-2. -->
+    <!-- CRUD Update 단계 7-2. -->
     <update id="updateMember">
         UPDATE member
         SET
@@ -38,7 +38,7 @@
     </update>
             <!--이런 update SQL 쓰는 방법도 있음 (실무형)-->
                 <!-- 📌포인트: 값이_없으면_해당컬럼은_건드리지않음 / <set> 덕분에_마지막콤마_걱정X   -->
-            <!--<updtae id="updateMember">-->
+            <!--<update id="updateMember">-->
             <!--    UPDATE member-->
             <!--    <set>-->
             <!--        <if test="name != null and name != ''">-->
@@ -49,7 +49,7 @@
             <!--        </if>-->
             <!--    </set>-->
             <!--    WHERE id = #{id}-->
-            <!--</updtae>-->
+            <!--</update>-->
 
 
 
