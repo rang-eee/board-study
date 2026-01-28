@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.MemberMapper">
+
+    <insert id="insertMember" parameterType="MemberDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member (name, email)
+        VALUES (#{name}, #{email})
+    </insert>
+
+    <!-- select 단계 2. -->
+    <select id="selectMemberList"
+            resultType="com.example.demo.dto.MemberDto">
+            -- ㄴresultType = DTO 풀패키지명
+        SELECT
+            id,
+            name,
+            email,
+            created_at
+        FROM member
+            -- 컬럼(column)명 = DTO 필드명(camelCase 자동 매핑)
+        ORDER BY id DESC
+    </select>
+
+    <!-- CRUD Update 단계 3. -->
+    <select id="selectMemberById" resultType="com.example.demo.dto.MemberDto">
+        SELECT id, name, email, created_at
+        FROM member
+        WHERE id = #{id}
+    </select>
+    <!-- CRUD Updtae 단계 7-2. -->
+    <update id="updateMember">
+        UPDATE member
+        SET
+            name = #{name},
+            email = #{email}
+        WHERE id = #{id}
+    </update>
+            <!--이런 update SQL 쓰는 방법도 있음 (실무형)-->
+                <!-- 📌포인트: 값이_없으면_해당컬럼은_건드리지않음 / <set> 덕분에_마지막콤마_걱정X   -->
+            <!--<updtae id="updateMember">-->
+            <!--    UPDATE member-->
+            <!--    <set>-->
+            <!--        <if test="name != null and name != ''">-->
+            <!--            name = #{name},-->
+            <!--        </if>-->
+            <!--        <if test="email != null and email != ''">-->
+            <!--            email = #{email},-->
+            <!--        </if>-->
+            <!--    </set>-->
+            <!--    WHERE id = #{id}-->
+            <!--</updtae>-->
+
+
+
+    <!-- CRUD Delete 단계 5. -->
+    <delete id="deleteMember">
+        DELETE FROM member
+        WHERE id = #{id}
+    </delete> <!-- ⚠️ 꼭 확인하기 : ❗ WHERE 없는 DELETE =    -->
+                            <!--    👉 테이블 전체 삭제 / 사고 보고서 정도 수준의 잘못. -->
+<!--    그래서 이런 방법도 있음 (Soft Delete)     -->
+    <!--  SQL문 쓰는 곳에다 이렇게 먼저 써주고 -->
+                        <!--  ALTER TABLE member ADD deleted_yn CHAR(1) DEFAULT 'N';  -->
+<!--        UPDATE member
+            SET deleted_yn = 'Y'
+            WHERE id = #{id};
+-->
+<!--    그리고 select 할 때:
+            WHERE deleted_yn = 'N'
+        -->
+<!--    엥 이거 어케하는거임-->
+
+
+
+</mapper>
