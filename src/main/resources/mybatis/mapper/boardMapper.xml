@@ -1,7 +1,7 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--<mapper namespace="com.example.demo.mapper.MemberMapper">-->
+<mapper namespace="com.example.demo.mapper.MemberMapper">
 
 <!--&lt;!&ndash;    <select id="selectAll" resultType="com.visit.board.dto.Board">&ndash;&gt;-->
 <!--&lt;!&ndash;        SELECT&ndash;&gt;-->
@@ -12,4 +12,4 @@
 <!--&lt;!&ndash;&#45;&#45;         FROM TABLE (  ) // table name : email_verify&ndash;&gt;-->
 <!--&lt;!&ndash;        FROM USER_ID (  )&ndash;&gt;-->
 <!--&lt;!&ndash;    </select>&ndash;&gt;-->
-<!--</mapper>-->
+</mapper>
