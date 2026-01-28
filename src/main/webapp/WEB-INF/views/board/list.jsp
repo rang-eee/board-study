@@ -185,7 +185,6 @@
 <%-- 3️⃣ IndexedDB JS --%>
 <script>
     // var memoDB;
-    // var memoDB;
     //     예: /board/list
     var memoDB = null;
     // var pageKey = location.pathname + location.search;  // <-- /board/list 뒤에 ?id=1(=글 상세조회) 값이 달라질때마다 메모Data가 달라지는 현상
