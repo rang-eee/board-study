@@ -23,7 +23,8 @@
         #memo-box {
             position: fixed;
             right: 20px;
-            top: 100px;
+            /*top: 100px;*/
+            bottom: 100px;
             width: 220px;
             background: #fffbe6;
             border: 1px solid #ddd;
