@@ -53,9 +53,9 @@
             <button id="memo-toggle" class="closeBtn">🔼</button>
         </div>
     </div>
-    <div id="memo-body" style="/* border: 2px solid red */ ">
+    <div id="memo-body">
 
-        <textarea id="memo-text" style="max-width: 100%; min-height: 120px;" placeholder="메모 입력"></textarea>
+        <textarea id="memo-text" placeholder="메모 입력 하세요."></textarea>
         <%--        <button onclick="saveMemo()">저장</button>--%>
         <button id="memo-add">➕ 메모 추가</button>
         <%--        <button id="memo-save">저장</button>--%>
@@ -143,7 +143,15 @@
 
         var tx = memoDB.transaction("memos", "readonly");
         var store = tx.objectStore("memos");
-        var index = store.index("page");
+
+        // var index = store.index("page"); // 에러 안뜨게 방어처리
+        // index 존재 여부 체크
+        if(!store.indexNames.contains("page")) {
+            console.warn("page index 없음 - DB 재생성 필요");
+            return;
+        }
+
+        console.log(index, "index 오류없음");
 
         var req = index.getAll(pageKey);
         // var getReq = store.get(pageKey);
@@ -199,13 +207,13 @@
         actions.className = "memo-actions";
 
         var editBtn = document.createElement("button");
-        editBtn.innerText = "수정";
+        editBtn.innerText = "✏️";
         editBtn.onclick = function () {
             editMemo(memo.id, memo.content);
         };
 
         var delBtn = document.createElement("button");
-        delBtn.innerText = "삭제";
+        delBtn.innerText = "✖️";
         delBtn.onclick = function () {
             deleteMemo(memo.id);
         };

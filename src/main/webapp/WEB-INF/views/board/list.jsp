@@ -232,7 +232,15 @@
 
         var tx = memoDB.transaction("memos", "readonly");
         var store = tx.objectStore("memos");
-        var index = store.index("page");
+
+        // var index = store.index("page"); // 에러 안뜨게 방어처리
+            // index 존재 여부 체크
+        if(!store.indexNames.contains("page")) {
+            console.warn("page index 없음 - DB 재생성 필요");
+            return;
+        }
+
+        console.log(index, "index 오류없음");
 
         var req = index.getAll(pageKey);
         // var getReq = store.get(pageKey);
