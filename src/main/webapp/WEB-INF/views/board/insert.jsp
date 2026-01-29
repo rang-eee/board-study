@@ -3,55 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>글쓰기</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/memo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        label { display: block; margin-top: 10px; }
-        input[type=text], textarea { width: 400px; padding: 4px; margin-top: 4px; }
-        button, a { padding: 4px 8px; margin-top: 10px; text-decoration: none; }
-        .btn-submit { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        .btn-cancel { background-color: #f44336; color: white; border: none; cursor: pointer; }
-
-        /* float-MEMO-UI-style */
-        #memo-box {
-            position: fixed;
-            right: 20px;
-            /*top: 100px;*/
-            bottom: 80px;
-            width: 240px;
-            background: #fffbe6;
-            border: 1px solid #ddd;
-            padding: 10px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-
-        #memo-box textarea {
-            width: 100%;
-            height: 80px;
-        }
-
-        #memo-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-        #memo-list li {
-            background: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 6px;
-            padding: 5px;
-            font-size: 13px;
-        }
-
-        .memo-actions button {
-            margin-right: 4px;
-            font-size: 11px;
-        }
-
-        #memo-box button {
-            width: 100%;
-            margin-top: 5px;
-        }
-
     </style>
 <%--    <title>Member Insert</title>--%>
     <%-- Bootstrap --%>
@@ -95,7 +49,7 @@
 <%-- 플로팅 메모 UI --%>
 <div id="memo-box">
     <div style="display: flex; justify-content: space-between; align-items: center">
-        <h4>📝 메모</h4>
+        <strong>📝 메모</strong>
         <div>
             <button id="memo-toggle" class="closeBtn">🔼</button>
         </div>

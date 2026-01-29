@@ -8,58 +8,9 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판 목록</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/memo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        table { border-collapse: collapse; width: 700px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f4f4f4; }
-        a, button { margin-right: 4px; text-decoration: none; }
-        .btn { padding: 4px 8px; border-radius: 4px; cursor: pointer; }
-        .btn-edit { background-color: #4CAF50; color: white; }
-        .btn-delete { background-color: #f44336; color: white; }
-        .btn-new { background-color: #2196F3; color: white; margin-bottom: 10px; display: inline-block; }
-
-        /* float-MEMO-UI-style */
-        #memo-box {
-            position: fixed;
-            right: 20px;
-            /*top: 100px;*/
-            bottom: 80px;
-            width: 240px;
-            background: #fffbe6;
-            border: 1px solid #ddd;
-            padding: 10px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-
-        #memo-box textarea {
-            width: 100%;
-            height: 80px;
-        }
-
-        #memo-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-        #memo-list li {
-            background: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 6px;
-            padding: 5px;
-            font-size: 13px;
-        }
-
-        .memo-actions button {
-            margin-right: 4px;
-            font-size: 11px;
-        }
-
-        #memo-box button {
-            width: 100%;
-            margin-top: 5px;
-        }
-
     </style>
 <%--    <title>Member List</title>--%>
     <%-- Bootstrap --%>
@@ -186,14 +137,14 @@
 <%-- 플로팅 메모 UI --%>
 <div id="memo-box">
     <div style="display: flex; justify-content: space-between; align-items: center">
-        <h4>📝 메모</h4>
+        <strong>📝 메모</strong>
         <div>
             <button id="memo-toggle" class="closeBtn">🔼</button>
         </div>
     </div>
-    <div id="memo-body" style="/* border: 2px solid red */ ">
+    <div id="memo-body">
 
-        <textarea id="memo-text" style="max-width: 100%; min-height: 120px;" placeholder="메모 입력"></textarea>
+        <textarea id="memo-text" placeholder="메모 입력"></textarea>
 <%--        <button onclick="saveMemo()">저장</button>--%>
         <button id="memo-add">➕ 메모 추가</button>
 <%--        <button id="memo-save">저장</button>--%>
@@ -337,13 +288,13 @@
         actions.className = "memo-actions";
 
         var editBtn = document.createElement("button");
-        editBtn.innerText = "수정";
+        editBtn.innerText = "✏️";
         editBtn.onclick = function () {
             editMemo(memo.id, memo.content);
         };
 
         var delBtn = document.createElement("button");
-        delBtn.innerText = "삭제";
+        delBtn.innerText = "✖️";
         delBtn.onclick = function () {
             deleteMemo(memo.id);
         };
