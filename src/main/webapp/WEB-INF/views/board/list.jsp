@@ -144,7 +144,7 @@
     </div>
     <div id="memo-body">
 
-        <textarea id="memo-text" placeholder="메모 입력"></textarea>
+        <textarea id="memo-text" placeholder="메모 입력 하세요."></textarea>
 <%--        <button onclick="saveMemo()">저장</button>--%>
         <button id="memo-add">➕ 메모 추가</button>
 <%--        <button id="memo-save">저장</button>--%>
