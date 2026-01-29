@@ -240,8 +240,7 @@
             return;
         }
 
-        console.log(index, "index 오류없음");
-
+        var index = store.index("page");
         var req = index.getAll(pageKey);
         // var getReq = store.get(pageKey);
 
