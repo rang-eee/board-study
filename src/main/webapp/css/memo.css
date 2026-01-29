@@ -86,11 +86,13 @@
     /*color: red;*/
     background-color: #ffe37d;
 }
+
 #memo-list li:nth-child(5) {
-    /*color: red;*/
     background-color: #ef7777;
 }
 #memo-list li:nth-child(6) {
-    /*color: red;*/
     background-color: #8e99ab;
+}
+#memo-list li:nth-child(7) {
+    background-color: #ffdbdb;
 }
